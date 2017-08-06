@@ -28,8 +28,28 @@ public class MainFragment extends Fragment{
         super.onActivityCreated(savedInstanceState);
 
         // Register Controller
+        registerController();
+
+
+    }
+
+    private void registerController() {
         TextView textView = (TextView) getView().findViewById(R.id.txtNewRegister);
 
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SignUpFragment signUpFragment = new SignUpFragment();
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.mainContainer, signUpFragment)
+                        .addToBackStack(null)
+                        .commit();
+
+
+            }
+        });
 
 
     }
